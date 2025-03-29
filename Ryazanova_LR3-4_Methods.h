@@ -33,17 +33,25 @@ bool isValidSpeed(double speed) {
 // Ввод данных
 int inputCapacity() {
     int capacity;
-    do {
-        cout << "Enter capacity: ";
+    while (true) {
+        cout << "Введите емкость: ";
         cin >> capacity;
-    } while (!isValidCapacity(capacity));
+        if (cin.fail() || !isValidCapacity(capacity)) {
+            cin.clear(); // Сбросить состояние потока
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Игнорировать неверный ввод
+            cout << "Ошибка ввода. Пожалуйста, введите положительное число." << std::endl;
+        } else {
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Игнорировать оставшийся ввод
+            break; // Ввод корректен, выходим из цикла
+        }
+    }
     return capacity;
 }
 
 double inputSpeed() {
     double speed;
     do {
-        cout << "Enter speed: ";
+        cout << "Введите скорость: ";
         cin >> speed;
     } while (!isValidSpeed(speed));
     return speed;
@@ -74,7 +82,7 @@ void EnterMenu(int& choice, const string& prompt) {
 
 void addAirPlane(){
       string model;
-        cout << "Enter model: ";
+        cout << "Введите модель: ";
         cin >> model;
         int capacity = inputCapacity();
         vector<double> speeds;
