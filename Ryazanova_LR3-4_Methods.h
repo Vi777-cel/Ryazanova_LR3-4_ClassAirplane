@@ -50,10 +50,18 @@ int inputCapacity() {
 
 double inputSpeed() {
     double speed;
-    do {
+    while (true) {
         cout << "Введите скорость: ";
         cin >> speed;
-    } while (!isValidSpeed(speed));
+        if (cin.fail() || !isValidSpeed(speed)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+            cout << "Ошибка ввода. Пожалуйста, введите неотрицательное число." << endl;
+        } else {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+            break; 
+        }
+    }
     return speed;
 }
 
@@ -65,10 +73,14 @@ void displayAllAirplanes() {
 }
 
 // Получение отсортированного списка самолетов
-vector<Airplane> getSortedAirplanes() {
-    vector<Airplane> sortedAirplanes = airplanes;
+void displaySortedAirplanes() {
+    vector<Airplane> sortedAirplanes = airplanes; 
     sort(sortedAirplanes.begin(), sortedAirplanes.end());
-    return sortedAirplanes;
+    
+    cout << "Отсортированные самолеты по средней скорости:" << endl;
+    for (const auto& airplane : sortedAirplanes) {
+        airplane.display();
+    }
 }
 void EnterMenu(int& choice, const string& prompt) {
     cout << prompt;
@@ -91,4 +103,4 @@ void addAirPlane(){
         }
         airplanes.emplace_back(model, capacity, speeds);
     };
-#endif // RYAZANOV_LR3_4_METHODS_H
+#endif 

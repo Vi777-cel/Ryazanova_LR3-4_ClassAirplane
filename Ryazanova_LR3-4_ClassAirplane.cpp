@@ -1,9 +1,13 @@
 #include <iostream>
-#include <ctime>
+#include <string>
+#include <vector>
+#include <algorithm>
 #include <iomanip>
 #include "M:\\Program\\Ryazanova_LR3-4_ClassAirplane\\Ryazanova_LR3-4_Methods.h"
- 
-// Конструкторы
+
+using namespace std;
+
+
 Airplane::Airplane() : model("Unknown"), capacity(0), speeds({}) {}
 
 Airplane::Airplane(const std::string& model, int capacity, const std::vector<double>& speeds)
@@ -36,7 +40,7 @@ Airplane& Airplane::operator=(Airplane&& other) noexcept {
 
 Airplane::~Airplane() {}
 
-// Методы get и set
+// Getters and Setters
 string Airplane::getModel() const { return model; }
 void Airplane::setModel(const string& model) { this->model = model; }
 int Airplane::getCapacity() const { return capacity; }
@@ -44,7 +48,7 @@ void Airplane::setCapacity(int capacity) { this->capacity = capacity; }
 vector<double> Airplane::getSpeeds() const { return speeds; }
 void Airplane::setSpeeds(const vector<double>& speeds) { this->speeds = speeds; }
 
-// Метод вывода информации о самолете
+// Method to display airplane information
 void Airplane::display() const {
     cout << "Model: " << model << ", Capacity: " << capacity << ", Speeds: ";
     for (const auto& speed : speeds) {
@@ -53,7 +57,7 @@ void Airplane::display() const {
     cout << endl;
 }
 
-// Средняя скорость
+// Average speed calculation
 double Airplane::averageSpeed() const {
     double sum = 0;
     for (const auto& speed : speeds) {
@@ -62,7 +66,7 @@ double Airplane::averageSpeed() const {
     return speeds.empty() ? 0 : sum / speeds.size();
 }
 
-// Перегруженные операции
+// Overloaded operators
 bool Airplane::operator<(const Airplane& other) const {
     return averageSpeed() < other.averageSpeed();
 }

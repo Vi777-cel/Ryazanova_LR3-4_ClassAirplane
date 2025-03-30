@@ -21,13 +21,10 @@ public:
 int main() {
     //Генерация случайного значения
 srand(time(NULL));
-
-    const string FNAME("M:\\Program\\Ryazanova_LR2\\Ryazanova_LR2_ClassSmartphone\\Smartphone.txt");
-
     map<int, MenuItem> menu = {
         {1, {"Добавить самолет",addAirPlane }},
         {2, {"Показать все самолеты", displayAllAirplanes}},
-        {3, {"Отсортировать самолеты", getSortedAirplanes}},
+        {3, {"Отсортировать самолеты",displaySortedAirplanes}},
     };
     int choice = 0;
     cout << "Меню:" << endl;
