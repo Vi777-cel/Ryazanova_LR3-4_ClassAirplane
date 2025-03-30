@@ -9,7 +9,7 @@ using namespace std;
 class MenuItem {
 public:
     string title; // Название пункта
-    function<void()> action; // Действие, связанное с пунктом меню
+    function<void()> action; // Действие
 };
 int main() {
     //Генерация случайного значения

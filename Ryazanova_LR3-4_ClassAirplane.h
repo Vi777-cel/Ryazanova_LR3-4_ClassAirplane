@@ -11,16 +11,16 @@ class Airplane {
 private:
     string model;
     int capacity;
-    vector<double> speeds; // Скорости в разных режимах полета
+    vector<double> speeds;
 
 public:
     // Конструкторы
     Airplane();
     Airplane(const string& model, int capacity, const vector<double>& speeds);
-    Airplane(const Airplane& other); // Конструктор копирования
-    Airplane(Airplane&& other) noexcept; // Конструктор перемещения
-    Airplane& operator=(const Airplane& other); // Оператор присваивания
-    Airplane& operator=(Airplane&& other) noexcept; // Оператор перемещения
+    Airplane(const Airplane& other); 
+    Airplane(Airplane&& other) noexcept;
+    Airplane& operator=(const Airplane& other); 
+    Airplane& operator=(Airplane&& other) noexcept; 
     ~Airplane(); // Деструктор
 
     // Методы get и set
@@ -32,14 +32,14 @@ public:
     void setSpeeds(const vector<double>& speeds);
 
     // Методы
-    void display() const; // Вывод информации о самолете
-    double averageSpeed() const; // Средняя скорость
+    void display() const; 
+    double averageSpeed() const; 
 
     // Перегруженные операции
-    bool operator<(const Airplane& other) const; // Сравнение по средней скорости
-    Airplane operator+(const Airplane& other) const; // Сложение
-    Airplane& operator++(); // Префиксный инкремент
-    Airplane operator++(int); // Постфиксный инкремент
+    bool operator<(const Airplane& other) const; 
+    Airplane operator+(const Airplane& other) const;
+    Airplane& operator++(); 
+    Airplane operator++(int); 
 };
 
 #endif 

@@ -37,12 +37,12 @@ int inputCapacity() {
         cout << "Введите емкость: ";
         cin >> capacity;
         if (cin.fail() || !isValidCapacity(capacity)) {
-            cin.clear(); // Сбросить состояние потока
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Игнорировать неверный ввод
+            cin.clear(); 
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
             cout << "Ошибка ввода. Пожалуйста, введите положительное число." << std::endl;
         } else {
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Игнорировать оставшийся ввод
-            break; // Ввод корректен, выходим из цикла
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+            break; 
         }
     }
     return capacity;
@@ -86,9 +86,9 @@ void EnterMenu(int& choice, const string& prompt) {
     cout << prompt;
     while (!(cin >> choice)) {
         cout << "Ошибка ввода. Пожалуйста, введите число." << endl;
-        cin.clear(); // Сбросить состояние потока
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Игнорировать неверный ввод
-        cout << prompt; // Повторный запрос
+        cin.clear(); 
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+        cout << prompt; 
     }
 }
 
@@ -98,7 +98,7 @@ void addAirPlane(){
         cin >> model;
         int capacity = inputCapacity();
         vector<double> speeds;
-        for (int i = 0; i < 3; ++i) { // Пример: ввод 3 скоростей
+        for (int i = 0; i < 3; ++i) {
             speeds.push_back(inputSpeed());
         }
         airplanes.emplace_back(model, capacity, speeds);
