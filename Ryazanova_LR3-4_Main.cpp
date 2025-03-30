@@ -10,14 +10,7 @@ class MenuItem {
 public:
     string title; // Название пункта
     function<void()> action; // Действие, связанное с пунктом меню
-
-    // Конструктор для инициализации названия и действия
-    MenuItem(const string& title, function<void()> action) 
-        : title(title), action(action) {}
-        // Конструктор по умолчанию
-    MenuItem() : title(""), action(nullptr) {}
 };
-
 int main() {
     //Генерация случайного значения
 srand(time(NULL));
